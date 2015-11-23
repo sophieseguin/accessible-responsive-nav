@@ -1,0 +1,386 @@
+/**
+* Navigation -- part of the Interfaces Namespace
+*
+* $author       Sophie Seguin
+* $email        sseguin@thisiszone.com
+* $url          http://www.thisiszone.com/
+* $copyright    Copyright (c) 2015, thisiszone.com. All rights reserved.
+*/
+
+$main-nav-bp1: em(750);
+$main-nav-bp2: em(600);
+
+
+.navigation-main {
+    @include col(12);
+    margin-bottom: 100px;
+
+    @media all and (max-width: $main-nav-bp1) {
+        @include col(12);
+    }
+}
+
+// -------------------------------------------------------------------------- */
+// ---------- Primary navigation -------------------------------------------- */
+// -------------------------------------------------------------------------- */
+
+.navigation-primary {
+    @include col(12);
+    background: $color-purple;
+
+    @media all and (max-width: $main-nav-bp1) {
+        display: none;
+        float: none;
+
+        &.is-visible,
+        .no-js & {
+            display: block;
+        }
+    }
+}
+
+.navigation-primary > .list-item {
+    float: left;
+
+    @media all and (max-width: $main-nav-bp1) {
+        position: relative;
+        float: none;
+        width: 100%;
+        margin-right: 0;
+        @include opacity(0);
+
+        .no-js & {
+            @include opacity(1);
+        }
+    }
+}
+
+.navigation-primary.is-visible > .list-item {
+    @include opacity(1);
+}
+
+.navigation-primary > .list-item > .list-item-wrapper {
+    position: relative;
+}
+
+.navigation-primary > .list-item > .list-item-wrapper [role="menuitem"] {
+    display: block;
+    padding: em(16) em(18) em(17);
+    background: $color-purple;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+// ---- Home icon item ------------------------------------------------------ */
+
+.navigation-primary > .list-item:first-child > .list-item-wrapper [role="menuitem"] {
+    text-indent: -999em;
+    width: em(20);
+    padding: em(14) em(18) em(19);
+    background: url("/images/icons/home.svg") no-repeat center center $color-purple;
+
+    @media all and (max-width: $main-nav-bp1) {
+        float: none;
+        width: auto;
+        padding: em(14, 18) em(18, 18) em(9, 18) em(60, 18);
+        background: url("/images/icons/home.svg") no-repeat 0.3em center $color-purple;
+        text-indent: 0;
+    }
+
+    .lt-ie9 & {
+        background: url(/images/icons/home.png) no-repeat left center $color-purple;
+
+        &.active, &:hover, &:focus, &:active {
+            background-color: $color-pink;
+            color: white;
+        }
+    }
+}
+
+// ---- Hover, focus, active state ------------------------------------------ */
+
+.navigation-primary > .list-item > .list-item-wrapper [role="menuitem"]:hover,
+.navigation-primary > .list-item > .list-item-wrapper [role="menuitem"]:focus,
+.navigation-primary > .list-item > .list-item-wrapper [role="menuitem"]:active,
+.navigation-primary > .list-item.hover > .list-item-wrapper [role="menuitem"],
+.navigation-primary > .list-item > .list-item-wrapper [role="menuitem"].touched,
+.navigation-primary > .list-item > .list-item-wrapper [role="menuitem"].active {
+    background-color: $color-pink;
+    color: white;
+}
+
+// Primary link and sub-nav links
+.navigation-primary > .list-item [role="menuitem"]:hover,
+.navigation-primary > .list-item [role="menuitem"]:focus {
+    text-decoration: underline;
+
+    @media all and (max-width: $main-nav-bp1) {
+        text-decoration: none;
+    }
+}
+
+
+// -------------------------------------------------------------------------- */
+// ---------- Sub-nav ------------------------------------------------------- */
+// -------------------------------------------------------------------------- */
+
+// Prevent FOUC
+.nav-prerender .active .navigation-secondary {
+    display: block;
+}
+
+.navigation-secondary {
+    @include col(12);
+    display: none;
+    position: absolute;
+    left: 0;
+    background: $color-pink;
+    z-index: 10;
+
+    .lt-ie9 & {
+        right: -1px;
+        width: auto;
+    }
+    &.is-visible {
+        display: block;
+        z-index: 15;
+    }
+}
+
+.navigation-secondary .list-item {
+    display: inline-block;
+    padding: em(17);
+}
+
+.navigation-secondary [role="menuitem"] {
+    display: block;
+    position: relative;
+    height: em(20);
+    padding: 0 em(16);
+    color: white;
+    text-align: center;
+    text-decoration: none;
+}
+
+// ---- Indicator of current page ------------------------------------------- */
+
+.navigation-secondary [role="menuitem"]:after {
+    @extend %before-after-base;
+    display: none;
+}
+
+.navigation-secondary [role="menuitem"].active:after {
+    display: block;
+    left: 0;
+    right: 0;
+    bottom: -17px;
+    width: 17px;
+    height: 8px;
+    margin: 0 auto;
+    background-image: url(/images/icons/arrow_up_nav.svg);
+}
+
+.lt-ie9 .navigation-secondary [role="menuitem"].active:after {
+    bottom: -1.03em;
+    background: url("/images/icons/arrow_up_nav.png") no-repeat;
+}
+
+// ---- Hover, focus, active state ------------------------------------------ */
+
+.navigation-secondary [role="menuitem"]:hover,
+.navigation-secondary [role="menuitem"]:focus,
+.navigation-secondary [role="menuitem"]:active {
+    color: white;
+
+    @media all and (max-width: $main-nav-bp1) {
+        background: $color-pink;
+        color: white;
+    }
+}
+
+
+// -------------------------------------------------------------------------- */
+// ---------- Mobile navigation --------------------------------------------- */
+// -------------------------------------------------------------------------- */
+
+@media all and (max-width: $main-nav-bp1) {
+
+    .navigation-secondary {
+        display: none;
+        position: static;
+        float: none;
+        width: 100%;
+        margin: 0 auto;
+        background: #c6405c;
+        color: white;
+
+        .no-js & {
+            display: block;
+        }
+    }
+
+    .navigation-secondary .list-item {
+        display: block;
+        padding: 0 0 2px 0;
+
+        &:last-child {
+            padding: 0;
+        }
+    }
+
+    // ---------- Links ----------------------------------------------------- */
+    
+    .navigation-primary > .list-item > .list-item-wrapper [role="menuitem"],
+    .navigation-secondary [role="menuitem"] {
+        padding: em(10) em(18);
+        text-align: left;
+        font-size: em(18);
+        line-height: 1.750;
+        color: white;
+    }
+
+    .navigation-secondary [role="menuitem"] {
+        padding: em(11) em(32) em(17);
+
+        &.active {
+            background: $color-pink;
+        }
+    }
+
+    .navigation-primary > .list-item {
+        border-bottom: 2px solid #594072;
+
+        &:last-child {
+            border: none;
+        }
+    }
+
+    // Border bottom not full width
+    .navigation-secondary [role="menuitem"]:after {
+        display: block;
+    }
+
+    .navigation-secondary [role="menuitem"]:after,
+    .navigation-secondary [role="menuitem"].active:after {
+        // On mobile, indicator of current page is overwritten
+        left: 0;
+        right: 0;
+        bottom: -2px;
+        width: 96%;
+        height: 2px;
+        margin: 0 auto;
+        background: #bc3d57;
+        background-image: none;
+    }
+
+    .navigation-secondary .list-item:last-child [role="menuitem"]:after {
+        display: none;
+    }
+
+}
+
+
+// -------------------------------------------------------------------------- */
+// ---------- Buttons ------------------------------------------------------- */
+// -------------------------------------------------------------------------- */
+
+// ---------- Nav button show/hide ---------- */
+
+.navigation-main .btn-show-hide-nav {
+    @include opacity(0);
+    display: none;
+    width: 100%;
+    padding: em(8) 0;
+    background-color: $color-purple;
+    text-decoration: none;
+
+    @media all and (max-width: $main-nav-bp1) {
+        display: block;
+        @include opacity(1);
+    }
+
+}
+
+.navigation-main .btn-show-hide-nav .icon {
+    position: relative;
+    display: block;
+    font-size: em(32);
+    height: 1.1875em;
+    margin-bottom: -0.3em;
+    margin-top: 0.3em;
+    color: white;
+
+    &:before {
+        @extend %before-after-base;
+        display: block;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 22px;
+        height: 18px;
+        margin: 0 auto;
+        background: url(/images/icons/burger.svg) no-repeat center center;
+    }
+}
+
+.btn-show-hide-nav .text {
+    @include el_off_screen;
+}
+
+// ---------- Sub-nav button show/hide ---------- */
+
+.navigation-primary .btn-show-hide-nav-secondary {
+    @include box-sizing(border-box);
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 3.375em;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    z-index: 15;
+    background-color: #503966;
+    
+    &:hover, &.touched {
+        background-color: #c6405c;
+    }
+
+    @media all and (max-width: $main-nav-bp1) {
+        display: block;
+
+        .no-js & {
+            display: none;
+        }
+    }
+}
+
+.navigation-primary > .list-item > .list-item-wrapper [role="menuitem"].active + .btn-show-hide-nav-secondary {
+    background-color: #c6405c;
+}
+
+.navigation-primary .btn-show-hide-nav-secondary.clicked {
+    background-color: #c6405c;
+}
+
+// Arrow icon
+.navigation-primary .btn-show-hide-nav-secondary .arrow-icon {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background: url("/images/icons/arrow_mobile_nav.svg") no-repeat center center;
+    background-size: 35%;
+}
+
+// Sub-nav open on load & when clicked
+.navigation-primary .btn-show-hide-nav-secondary.visible-subnav-on-load .arrow-icon,
+.navigation-primary .btn-show-hide-nav-secondary.clicked .arrow-icon {
+    @include rotate(180deg);
+}
+
+.hidden {
+    @include el-off-screen;
+}

@@ -1,0 +1,54 @@
+// --------------------------------------------------------------------------
+// Mixins
+// --------------------------------------------------------------------------
+// Author:      Zone
+// Email:		frontend@thisiszone.com
+// URL:			http://thisiszone.com
+// Copyright:	Copyright (c) 2015, thisiszone.com. All rights reserved.
+// Version:		1.5
+// --------------------------------------------------------------------------
+
+
+// Box model
+// --------------------------------------------------------------------------
+
+@mixin box-sizing-fallback($args: border-box) {
+	@include box-sizing($args);
+
+	*behavior: url(/src/scripts/plugins/boxsizing.htc);
+}
+
+@mixin box-sizing($box-model: border-box) {
+  	-webkit-box-sizing: $box-model; // Safari <= 5
+    -moz-box-sizing: $box-model; // Firefox <= 19
+  	box-sizing: $box-model;
+}
+
+
+// Hide text/els
+// --------------------------------------------------------------------------
+
+@mixin el-off-screen {
+	position: absolute;
+	left: -999em;
+}
+
+
+// CSS Tranformations
+// --------------------------------------------------------------------------
+
+@mixin rotate($deg: 0) {
+	-ms-transform: rotate($deg); /* IE 9 */
+    -webkit-transform: rotate($deg); /* Chrome, Safari, Opera */
+    transform: rotate($deg);
+}
+
+
+// Opacity
+// --------------------------------------------------------------------------
+
+@mixin opacity($opacity) {
+  opacity: $opacity;
+  $opacity-ie: $opacity * 100;
+  filter: alpha(opacity=$opacity-ie); //IE8
+}

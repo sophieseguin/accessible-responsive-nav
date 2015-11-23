@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]><html class="no-js lt-ie9 lt-ie8 lt-ie7"><![endif]-->
+<!--[if IE 7]><html class="no-js lt-ie9 lt-ie8"><![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9"><![endif]-->
+<!--[if gt IE 8]><!--><html class="no-js"><!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Accessible dropdown menu - desktop and mobile view</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script type="text/javascript" src="src/scripts/modernizr.js"></script>
+    <link rel="stylesheet" href="dist/styles/global.css">
+</head>
+
+<body>
+
+    <div role="main">
+
+        <div class="navigation-main has-sub-nav nav-prerender" role="navigation" data-behavior="navigation">
+            <a href="#main-menu" class="btn-show-hide-nav" data-behavior="show-hide-nav">
+                <span class="text">Show menu</span>
+                <span class="icon"></span>
+            </a>
+            <ul role="menubar" id="main-menu" class="navigation-primary">
+                
+                <li class="list-item">
+                    <div class="list-item-wrapper">
+                        <!-- On the homepage, the element below would have a class "active" added by back end -->
+                        <a role="menuitem" id="navigation-menuitem-1" href="#" class="">
+                            Nav item 1
+                        </a>
+                    </div>
+                </li>
+
+                <!-- Item with a sub navigation -->
+                <li class="list-item">
+                    <div class="list-item-wrapper">
+                        <!-- Current page element is in its sub navigation -->
+                        <a role="menuitem" id="navigation-menuitem-2" href="#" class="active">
+                            Nav item 2
+                        </a>
+
+                        <a href="#secondary-menu" class="btn-show-hide-nav-secondary">
+                            <span class="arrow-icon"></span>
+                        </a>
+                    </div>
+
+                    <!-- Sub Navigation -->
+                    <ul role="menu" aria-labelledby="navigation-menuitem-2" class="navigation-secondary">
+                        <li class="list-item">
+                            <div class="list-item-wrapper">
+                                <a role="menuitem" id="navigation-menuitem-2-1" href="#" class="">
+                                    Nav item 2.1
+                                </a>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-wrapper">
+                                <!-- Current page item -->
+                                <a role="menuitem" id="navigation-menuitem-2-2" href="#" class="active">
+                                    Nav item 2.2
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="list-item">
+                    <div class="list-item-wrapper">
+                        <a role="menuitem" id="navigation-menuitem-3" href="#" class="">
+                            Nav item 3
+                        </a>
+                    </div>
+                </li>
+
+                <li class="list-item">
+                    <div class="list-item-wrapper">
+                        <a role="menuitem" id="navigation-menuitem-4" href="#" class="">
+                            Nav item 4
+                        </a>
+                    </div>
+                </li>
+
+                <!-- Item with a sub navigation -->
+                <li class="list-item">
+                    <div class="list-item-wrapper">
+                        <a role="menuitem" id="navigation-menuitem-5" href="#" class="">
+                            Nav item 5
+                        </a>
+
+                        <a href="#secondary-menu" class="btn-show-hide-nav-secondary">
+                            <span class="arrow-icon"></span>
+                        </a>
+                    </div>
+
+                    <!-- Sub Navigation -->
+                    <ul role="menu" aria-labelledby="navigation-menuitem-5" class="navigation-secondary">
+                        <li class="list-item">
+                            <div class="list-item-wrapper">
+                                <a role="menuitem" id="navigation-menuitem-5-1" href="#" class="">
+                                    Nav item 5.1
+                                </a>
+                            </div>
+                        </li>
+                        <li class="list-item">
+                            <div class="list-item-wrapper">
+                                <!-- Current page item -->
+                                <a role="menuitem" id="navigation-menuitem-5-2" href="#" class="">
+                                    Nav item 5.2
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="list-item">
+                    <div class="list-item-wrapper">
+                        <a role="menuitem" id="navigation-menuitem-6" href="#" class="">
+                            Nav item 6
+                        </a>
+                    </div>
+                </li>
+
+                <li class="list-item">
+                    <div class="list-item-wrapper">
+                        <a role="menuitem" id="navigation-menuitem-7" href="#" class="">
+                            Nav item 7
+                        </a>
+                    </div>
+                </li>
+
+            </ul>
+        </div>
+
+        <input class="hidden" type="text">
+    </div>
+    
+    <script src="dist/scripts/app.js"></script>
+
+</body>
+</html>
