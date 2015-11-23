@@ -18,7 +18,7 @@ To begin working on the project, run:
 
 A new tab will open on your browser. Styles and scripts will be processed and watched for changes. Scripts will be linted. The `/src` folder contains all JavaScript and Sass. The accessible navigation module is in `/src/scripts/modules/accessible-nav.js`.
 
-**Resize the screen to view the mobile version and how the sub navigations are working.**
+**Resize the screen to view the mobile version and how the sub navigations work.**
 
 ## Context
 Originally part of a project using Umbraco and involving a Back end developer. This navigation was integrated in an Umbraco View.
